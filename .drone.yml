@@ -9,6 +9,7 @@ steps:
 - name: publish
   image: plugins/docker
   settings:
+    registry: registry.ismartapps.com.au
     repo: registry.ismartapps.com.au/my-push
     username:
       from_secret: username
