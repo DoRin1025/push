@@ -9,7 +9,7 @@ steps:
 - name: publish
   image: plugins/docker
   settings:
-    repo: dorin1025/p-test
+    repo: registry.ismartapps.com.au/my-push
     username:
       from_secret: username
     password:
