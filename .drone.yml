@@ -4,6 +4,7 @@ name: Publish
 trigger:
   branch:
     - main
+    
 steps:
 - name: publish
   image: plugins/docker
