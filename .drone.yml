@@ -16,30 +16,7 @@ steps:
       from_secret: username
     password:
       from_secret: password
-    tags: 1 
----
-kind: pipeline
-name: Publish Notification
-
-steps:
-- name: slack
-  image: plugins/slack
-  settings:
-    webhook: https://hooks.slack.com/services/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
-    channel: notify
-    template: >
-      {{#success build.status}}
-          `{{repo.name}}/{{build.branch}}`: Build #{{build.number}} successful 
-        {{else}}
-          `{{repo.name}}/{{build.branch}}`: Build #{{build.number}} failed 
-        {{/success}}
-trigger:
-  status:
-  - success
-  - failure
-
-depends_on:
-- Publish
+    tags: 1
 ---
 kind: pipeline
 name: Deploy
