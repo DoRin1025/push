@@ -24,16 +24,14 @@ steps:
 - name: ssh commands
   image: appleboy/drone-ssh
   settings:
-    host: 34.125.46.89
-    username: root
+    host: 213.136.89.28
+    username: 
+      from_secret: ssh_user
     password:
       from_secret: ssh_pass
     port: 22
     script:
-      - cd /push/push-core && git pull origin main
-      - cd /push/push-core && docker-compose down
-      - docker rmi dorin1025/p-test:1
-      - cd /push/push-core && docker-compose up -d
+      - mkdir /root/fromGitHub
 trigger:
   status:
   - success
