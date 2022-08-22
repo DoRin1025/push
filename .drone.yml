@@ -13,7 +13,7 @@ steps:
     port: 22
     script:
       - cd "C:\Certbot\testdeploy"
-      - dir
+      - ls
 trigger:
   status:
   - success
