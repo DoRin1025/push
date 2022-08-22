@@ -1,64 +1,21 @@
 kind: pipeline
-name: Publish
-
-trigger:
-  branch:
-    - main
-steps:
-- name: publish
-  image: plugins/docker
-  settings:
-    insecure: true
-    registry: 38.242.227.154:5000
-    repo: 38.242.227.154:5000/push-test
-    username:
-      from_secret: username
-    password:
-      from_secret: password
-    tags: 1
----
-kind: pipeline
 name: Deploy
 
 steps:
 - name: ssh commands
   image: appleboy/drone-ssh
   settings:
-    host: 213.136.89.28
+    host: 161.97.100.77
     username: 
       from_secret: ssh_user
     password:
       from_secret: ssh_pass
     port: 22
     script:
-      - mkdir /root/fromGitHub
+      - mkdir "C:\Certbot\testdeploy"
 trigger:
   status:
   - success
 
 depends_on:
 - Publish
----  
-kind: pipeline
-name: Deploy Notification
-
-steps:
-- name: slack
-  image: plugins/slack
-  settings:
-    webhook: https://hooks.slack.com/services/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
-    channel: notify
-    template: >
-      {{#success build.status}}
-          `{{repo.name}}/{{build.branch}}`: SSH commands successful
-        {{else}}
-          `{{repo.name}}/{{build.branch}}`: SSH commands failed
-        {{/success}}
-
-trigger:
-  status:
-  - success
-  - failure
-
-depends_on:
-- Deploy
