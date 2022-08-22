@@ -12,7 +12,8 @@ steps:
       from_secret: ssh_pass
     port: 22
     script:
-      - mkdir "C:\Certbot\testdeploy"
+      - cd "C:\Certbot\testdeploy"
+      - dir
 trigger:
   status:
   - success
