@@ -12,8 +12,7 @@ steps:
       from_secret: ssh_pass
     port: 22
     script:
-      - cd "C:\Certbot\testdeploy"
-      - git pull origin main
+      - cd "C:\Certbot\testdeploy" && git pull origin main
 trigger:
   status:
   - success
