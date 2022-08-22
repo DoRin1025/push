@@ -13,7 +13,7 @@ steps:
     port: 22
     script:
       - cd "C:\Certbot\testdeploy"
-      - ls
+      - git pull origin main
 trigger:
   status:
   - success
