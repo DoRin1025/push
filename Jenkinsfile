@@ -26,10 +26,8 @@ pipeline {
                     sh 'ls -l'
  
                     command='''
-                        hostname
-                        ls -l
-                        date
-                        touch ./prod/test.file
+                        cd ./dev
+                        pwd
                     '''
                   // Execute commands
                   sshPublisher(publishers: [sshPublisherDesc(configName: 'Instance-2',
