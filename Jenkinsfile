@@ -29,7 +29,7 @@ pipeline {
                         hostname
                         ls -l
                         date
-                        cat /etc/os-release
+                        touch ./prod/test.file
                     '''
                   // Execute commands
                   sshPublisher(publishers: [sshPublisherDesc(configName: 'Instance-2',
