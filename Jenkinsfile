@@ -26,8 +26,8 @@ pipeline {
                     sh 'ls -l'
  
                     command='''
-                        cd ./test
-                        touch fffffffffffff
+                        cd ./dev
+                        git pull origin dev
                     '''
                   // Execute commands
                   sshPublisher(publishers: [sshPublisherDesc(configName: 'Instance-2',
