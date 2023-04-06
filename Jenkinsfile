@@ -5,9 +5,9 @@ pipeline {
             steps {
                 script { 
                     if (env.BRANCH_NAME == 'main') {
-                        echo 'This is main $BRANCH_NAME'
+                        echo 'This is main env.BRANCH_NAME'
                     } else {
-                        echo 'This is not main $BRANCH_NAME'
+                        echo 'This is not main env.BRANCH_NAME'
                     }
                 }
             }
