@@ -1,14 +1,17 @@
 pipeline {
     agent any
-	stages {
-        stage('Example') {
-            when { 
-		    beforeOptions true
-		    branch 'dev' 
-	    }
+    stages {
+        stage('Example Build') {
             steps {
-                echo 'This is not master or staging'
-                
+                echo 'Hello World'
+            }
+        }
+        stage('Example Deploy') {
+            when {
+                branch 'production'
+            }
+            steps {
+                echo 'Deploying'
             }
         }
     }
