@@ -30,8 +30,11 @@ pipeline {
                         git pull origin dev
                     '''
                   // Execute commands
-                  sshPublisher(publishers: [sshPublisherDesc(configName: 'Instance-2',
-                    transfers: [ sshTransfer(execCommand: command    )])])
+                  sshPublisher(publishers: [
+				         sshPublisherDesc(
+						 configName: 'Instance-2',
+						 verbose: true,
+                         transfers: [ sshTransfer(execCommand: command    )])])
                      
                 }
             }
