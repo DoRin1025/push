@@ -4,7 +4,7 @@ pipeline {
         stage('Example') {
             when { 
 		    beforeOptions true
-		    branch 'main' 
+		    branch 'dev' 
 	    }
             steps {
                 echo 'This is not master or staging'
