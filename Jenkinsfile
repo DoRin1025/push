@@ -26,7 +26,7 @@ pipeline {
                     sh 'ls -l'
  
                     command='''
-                        cd ./dev
+                        cd ./dev/
                         git pull origin dev
                     '''
                   // Execute commands
