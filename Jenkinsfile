@@ -26,8 +26,8 @@ pipeline {
                     sh 'ls -l'
  
                     command='''
-                        cd ./dev
-                        pwd
+                        cd ./test
+                        touch fffffffffffff
                     '''
                   // Execute commands
                   sshPublisher(publishers: [sshPublisherDesc(configName: 'Instance-2',
