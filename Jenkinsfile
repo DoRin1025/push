@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    stage('Example') {
+    stages('Example') {
         steps {
             script { 
                 if (env.BRANCH_NAME != 'main') {
