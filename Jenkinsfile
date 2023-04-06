@@ -4,10 +4,10 @@ pipeline {
         stage('Example') {
             steps {
                 script { 
-                    if (env.BRANCH_NAME == 'master') {
-                        echo 'This is master'
+                    if (env.BRANCH_NAME == 'main') {
+                        echo 'This is main'
                     } else {
-                        echo 'things and stuff'
+                        echo 'This is not main'
                     }
                 }
             }
