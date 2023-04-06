@@ -19,7 +19,23 @@ pipeline {
                 branch 'dev'
             }
             steps {
-                echo 'Deploying to DEV'
+                script{
+                     
+                    cleanWs()
+                    echo 'Local files.....'       
+                    sh 'ls -l'
+ 
+                    command='''
+                        hostname
+                        ls -l
+                        date
+                        cat /etc/os-release
+                    '''
+                  // Execute commands
+                  sshPublisher(publishers: [sshPublisherDesc(configName: 'Instance-2',
+                    transfers: [ sshTransfer(execCommand: command    )])])
+                     
+                }
             }
         }
     }
