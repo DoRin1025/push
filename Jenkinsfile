@@ -11,7 +11,7 @@ pipeline {
                 branch 'main'
             }
             steps {
-                echo 'Deploying to Main'
+                echo 'Deploying'
             }
         }
         stage('Example Deploy DEV') {
