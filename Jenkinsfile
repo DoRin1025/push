@@ -4,8 +4,8 @@ pipeline {
         stage('Example') {
             steps {
                 script { 
-                    if (env.BRANCH_NAME != 'master' && env.BRANCH_NAME != 'staging') {
-                        echo 'This is not master or staging'
+                    if (env.BRANCH_NAME == 'master') {
+                        echo 'This is master'
                     } else {
                         echo 'things and stuff'
                     }
