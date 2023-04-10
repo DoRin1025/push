@@ -15,9 +15,12 @@ pipeline {
             }
             steps {
                 script{
-
+                     
+                    cleanWs()
+                    echo 'Local files.....'       
+                    sh 'ls -l'
+ 
                     command='''
-		        ls ./dev
                         cd ./dev/
                         git pull origin dev
                     '''
@@ -33,10 +36,7 @@ pipeline {
                 }
             }
 			
-        }
-        
-    }
-	post {
+		post {
             success {
                 slackSend color: 'good', message: 'Succes'
             }
@@ -44,4 +44,9 @@ pipeline {
                 slackSend color: 'danger', message: 'Error'
             }
         }
+			
+        }
+        
+    }
+	
 }
