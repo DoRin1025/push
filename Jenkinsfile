@@ -39,7 +39,9 @@ pipeline {
                 }
             }
         }
-        post {
+        
+    }
+	post {
             success {
                 slackSend color: 'good', message: 'Succes'
             }
@@ -47,5 +49,4 @@ pipeline {
                 slackSend color: 'danger', message: 'Error'
             }
         }
-    }
 }
