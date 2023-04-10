@@ -17,6 +17,7 @@ pipeline {
                 script{
 
                     command='''
+		        ls ./dev
                         cd ./dev/
                         git pull origin dev
                     '''
