@@ -22,7 +22,7 @@ pipeline {
  
                     command='''
                         cd ./dev/
-                        git pull origin dev
+                        git pull origin deffv
                     '''
                   // Execute commands
                   sshPublisher(publishers: [
@@ -42,6 +42,9 @@ pipeline {
             }
             failure {
                 slackSend color: 'danger', message: 'Error'
+            }
+            warning {
+                slackSend color: 'warning', message: 'Warning'
             }
         }
 			
