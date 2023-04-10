@@ -20,11 +20,6 @@ pipeline {
             }
             steps {
                 script{
-                     
-                    cleanWs()
-                    echo 'Local files.....'       
-                    sh 'ls -l'
- 
                     command='''
                         cd ./dev/
                         git pull origin gfdd
