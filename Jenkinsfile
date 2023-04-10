@@ -27,7 +27,7 @@ pipeline {
  
                     command='''
                         cd ./dev/
-                        git pull origin dev
+                        git pull origin gfdd
                     '''
                   // Execute commands
                   sshPublisher(publishers: [
