@@ -1,3 +1,4 @@
+def flag = false;
 pipeline {
     agent any
     stages {
@@ -20,9 +21,14 @@ pipeline {
             }
             steps {
                 script{
+                     
+                    cleanWs()
+                    echo 'Local files.....'       
+                    sh 'ls -l'
+ 
                     command='''
                         cd ./dev/
-                        git pull origin gfdd
+                        git pull origin dev
                     '''
                   // Execute commands
                   sshPublisher(publishers: [
@@ -30,21 +36,20 @@ pipeline {
 						 configName: 'Instance-2',
 						 verbose: true,
                          transfers: [ sshTransfer(execCommand: command    )])])
+						 
+				   flag = true
                      
                 }
+            }
+			
+        }
+		stage('3 - If Maybe was executed') {
+            when { expression { flag == true } }
+
+            steps {
+                slackSend color: 'good', message: 'Succes'
             }
         }
         
     }
-	post {
-            success {
-                slackSend color: 'good', message: 'Succes'
-            }
-            failure {
-                slackSend color: 'danger', message: 'Error'
-            }
-            unstable {
-	    	slackSend color: 'warning', message: 'Warning'
-	    }
-        }
 }
