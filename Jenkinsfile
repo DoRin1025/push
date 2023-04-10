@@ -39,5 +39,13 @@ pipeline {
                 }
             }
         }
+        post {
+            success {
+                slackSend color: 'good', message: 'Succes'
+            }
+            failure {
+                slackSend color: 'danger', message: 'Error'
+            }
+        }
     }
 }
