@@ -48,5 +48,8 @@ pipeline {
             failure {
                 slackSend color: 'danger', message: 'Error'
             }
+            unstable {
+	    	slackSend color: 'warning', message: 'Warning'
+	    }
         }
 }
