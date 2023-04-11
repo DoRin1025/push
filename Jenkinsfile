@@ -1,19 +1,33 @@
 pipeline {
     agent any
     stages {
-        stage('Build Docker') {
-            steps {
-               echo 'Urrraa'
+        stage('Example Deploy Main') {
+            when {
+                branch 'main'
             }
-        post {
+            steps {
+                echo 'Deploying'
+            }
+        }
+        stage('Example Deploy DEV') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                 echo 'Urrraa'
+            }
+			
+		post {
             success {
                 slackSend color: 'good', message: 'Succes'
             }
             failure {
                 slackSend color: 'danger', message: 'Error'
             }
-        }
-            
+            unstable {
+                slackSend color: 'warning', message: 'Warning'
+            }
+        }	
         }
     }
 }
