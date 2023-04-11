@@ -14,6 +14,7 @@ pipeline {
                 branch 'dev'
             }
             steps {
+
                  echo 'Urrraa'
             }
 			
@@ -27,6 +28,7 @@ pipeline {
             unstable {
                 slackSend color: 'warning', message: 'Warning'
             }
+
         }	
         }
     }
