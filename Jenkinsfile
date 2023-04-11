@@ -13,6 +13,14 @@ pipeline {
             steps {
                sh 'docker push registry.ismartapps.com.au:5000/test-docker:latest'
             }
+        post {
+            success {
+                slackSend color: 'good', message: 'Succes'
+            }
+            failure {
+                slackSend color: 'danger', message: 'Error'
+            }
+        }
         }
     }
 }
