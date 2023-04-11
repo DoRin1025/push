@@ -21,6 +21,7 @@ pipeline {
                 slackSend color: 'danger', message: 'Error'
             }
         }
+            
         }
     }
 }
