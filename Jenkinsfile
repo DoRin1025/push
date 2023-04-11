@@ -20,7 +20,7 @@ pipeline {
 			
 		post {
             success {
-                slackSend color: 'good', message: "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+                slackSend color: 'good', message: "Build successfully deployed on is-android-test  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) Good job!"
             }
             failure {
                 slackSend color: 'danger', message: 'Error'
