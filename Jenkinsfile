@@ -20,7 +20,7 @@ pipeline {
 			
 		post {
             success {
-                slackSend color: 'good', message: 'Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}'
+                slackSend color: 'good', message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
             }
             failure {
                 slackSend color: 'danger', message: 'Error'
