@@ -15,4 +15,4 @@ steps:
       - cd "C:\Certbot\testdeploy" && git pull origin main && exit
 trigger:
   status:
-  - succes
+  - success
