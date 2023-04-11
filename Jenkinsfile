@@ -14,26 +14,8 @@ pipeline {
                 branch 'dev'
             }
             steps {
-                script{
-                     
-                    cleanWs()
-                    echo 'Local files.....'       
-                    sh 'ls -l'
- 
-                    command='''
-                        cd ./dev/
-                        git pull origin deffv
-                    '''
-                  // Execute commands
-                  sshPublisher(publishers: [
-				         sshPublisherDesc(
-						 configName: 'Instance-2',
-						 verbose: true,
-                         transfers: [ sshTransfer(execCommand: command    )])])
-						 
-				   flag = true
-                     
-                }
+
+                 echo 'Urrraa'
             }
 			
 		post {
@@ -46,6 +28,7 @@ pipeline {
             unstable {
                 slackSend color: 'warning', message: 'Warning'
             }
+
         }	
         }
     }
