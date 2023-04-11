@@ -23,10 +23,10 @@ pipeline {
                 slackSend color: 'good', message: "Build successfully deployed on is-android-test  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) Good job!"
             }
             failure {
-                slackSend color: 'danger', message: 'Error'
+                slackSend color: 'danger', message: "Deploy failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) Fix me please."
             }
             unstable {
-                slackSend color: 'warning', message: 'Warning'
+                slackSend color: 'warning', message: "Deploy finished with a warning- ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) Fix me please."
             }
 
         }	
