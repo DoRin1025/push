@@ -4,8 +4,9 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('dockerRegistry')
     }
     stages {
+	
 	    stage('Build Docker image') {
-            when {
+		    when {
                 branch 'dev'
             }
             steps {
@@ -20,15 +21,15 @@ pipeline {
         }
 		
         stage('Publish Docker image') {
-            steps {
             when {
                 branch 'dev'
-            }
+            }		
+            steps {
+
                sh 'docker push registry.ismartapps.com.au:5000/test-docker:latest'
             }
         
             
         }
     }
-}
 }
