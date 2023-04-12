@@ -1,35 +1,34 @@
 pipeline {
     agent any
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('dockerRegistry')
+    }
     stages {
-        stage('Example Deploy Main') {
-            when {
-                branch 'main'
-            }
-            steps {
-                echo 'Deploying'
-            }
-        }
-        stage('Example Deploy DEV') {
+	    stage('Build Docker image') {
             when {
                 branch 'dev'
             }
             steps {
-
-                 echo 'Urrraa'
+                 sh 'docker image build -t test-push .'
             }
-			
-		post {
-            success {
-                slackSend color: 'good', message: "Build successfully deployed on is-android-test  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) Good job!"
+        }
+		
+        stage('Login') {
+            steps {
+                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login registry.ismartapps.com.au:5000 -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
-            failure {
-                slackSend color: 'danger', message: "Deploy failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) Fix me please."
+        }
+		
+        stage('Publish Docker image') {
+            steps {
+            when {
+                branch 'dev'
             }
-            unstable {
-                slackSend color: 'warning', message: "Deploy finished with a warning- ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) Fix me please."
+               sh 'docker push registry.ismartapps.com.au:5000/test-docker:latest'
             }
-
-        }	
+        
+            
         }
     }
+}
 }
