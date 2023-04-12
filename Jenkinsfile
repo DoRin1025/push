@@ -10,7 +10,7 @@ pipeline {
                 branch 'dev'
             }
             steps {
-                 sh 'docker image build -t test-push .'
+                 sh 'docker image build -t test-push:1 .'
             }
         }
 		
